@@ -17,6 +17,7 @@ import {
   IonItem,
   IonItemDivider,
   IonLabel,
+  IonNav,
   IonNote,
   IonSelect,
   IonSelectOption,
@@ -36,7 +37,12 @@ import {
   personOutline,
   planetOutline,
 } from 'ionicons/icons';
-import { CancelUserRegistrationAlert } from '../cancel-user-registration-alert/cancel-user-registration-alert';
+import { CancelUserRegistrationAlert } from '../../../pages/registration/cancel-user-registration-alert/cancel-user-registration-alert';
+import { DEFAULT_ION_LOADING_DURATION } from '../../../interfaces/global-constants';
+import { MvsIonicLoadingService } from '../../../services/mvs-ionic-loading.service';
+import {
+  UserRegistrationSuccessComponent
+} from '../../../pages/registration/user-registration-success/user-registration-success.component';
 
 @Component({
   selector: 'app-pro-registration-form',
@@ -63,7 +69,13 @@ import { CancelUserRegistrationAlert } from '../cancel-user-registration-alert/c
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProRegistrationFormComponent {
-  step = signal(1);
+  private registrationNavCtx = inject(IonNav);
+  private registrationSuccessComponent = UserRegistrationSuccessComponent;
+
+  private mvsIonLoadingService = inject(MvsIonicLoadingService);
+
+  formRegistrationStep = signal(1);
+
   activityTypes = [
     { value: 'bar', label: 'Bar' },
     { value: 'karaoke', label: 'Karaoke' },
@@ -73,6 +85,7 @@ export class ProRegistrationFormComponent {
     { value: 'théatre', label: 'Théatre' },
   ];
   private formBuilder = inject(FormBuilder);
+
   registrationForm = this.formBuilder.group({
     eventHost: this.formBuilder.group({
       label: ['', [Validators.required]],
@@ -113,23 +126,38 @@ export class ProRegistrationFormComponent {
   }
 
   nextStep() {
-    this.step.set(2);
+    this.formRegistrationStep.set(2);
   }
 
   previousStep() {
-    this.step.set(1);
+    this.formRegistrationStep.set(1);
   }
 
   onSubmit() {
-    if (this.registrationForm.valid) {
-      console.log(this.registrationForm.value);
+    if (!this.registrationForm.valid) {
+      try {
+        this.mvsIonLoadingService.presentIonicLoadingSpinner(
+          'Ouverture de ton compte en cours...',
+          DEFAULT_ION_LOADING_DURATION,
+        );
+        this.registerMvsNeighbor();
+      } catch (error) {
+        console.error('Error during neighbor registration:', error);
+      }
     }
+  }
+
+  registerMvsNeighbor() {
+    // call register service
+    setTimeout(async () => {
+      this.registrationNavCtx.push(this.registrationSuccessComponent);
+      console.log('Pro Registration Data:', this.registrationForm.value);
+    }, DEFAULT_ION_LOADING_DURATION);
   }
 
   private passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
     const password = control.get('password')?.value;
     const confirmPassword = control.get('confirmPassword')?.value;
-    // return password === confirmPassword ? null : { passwordMismatch: true };
-    return null;
+    return password === confirmPassword ? null : { passwordMismatch: true };
   }
 }

@@ -26,8 +26,8 @@ import {
   planetOutline
 } from 'ionicons/icons';
 import {
-  NeighborRegistrationSuccessComponent
-} from '../../../pages/registration/neighbor-registration-success/neighbor-registration-success.component';
+  UserRegistrationSuccessComponent
+} from '../../../pages/registration/user-registration-success/user-registration-success.component';
 import { MvsIonicLoadingService } from '../../../services/mvs-ionic-loading.service';
 import { MvsIonicAlertService } from '../../../services/mvs-ionic-alert-service';
 import { DEFAULT_ION_LOADING_DURATION } from '../../../interfaces/global-constants';
@@ -55,9 +55,11 @@ import { DEFAULT_ION_LOADING_DURATION } from '../../../interfaces/global-constan
 export class NeighborRegistrationFormComponent {
   private registrationModalCtrl = inject(ModalController);
   private registrationNavCtx = inject(IonNav);
-  private registrationSuccessComponent = NeighborRegistrationSuccessComponent;
+
   private mvsIonLoadingService = inject(MvsIonicLoadingService);
   private mvsIonAlertService = inject(MvsIonicAlertService);
+
+  private registrationSuccessComponent = UserRegistrationSuccessComponent;
 
   private registrationFormBuilder = inject(FormBuilder);
   registrationForm = this.registrationFormBuilder.group({

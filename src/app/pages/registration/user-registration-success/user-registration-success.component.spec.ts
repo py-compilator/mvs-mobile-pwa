@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { NeighborRegistrationSuccessComponent } from './neighbor-registration-success.component';
+import { UserRegistrationSuccessComponent } from './user-registration-success.component';
 
-describe('NeighborRegistrationSuccessComponent', () => {
-  let component: NeighborRegistrationSuccessComponent;
-  let fixture: ComponentFixture<NeighborRegistrationSuccessComponent>;
+describe('UserRegistrationSuccessComponent', () => {
+  let component: UserRegistrationSuccessComponent;
+  let fixture: ComponentFixture<UserRegistrationSuccessComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [NeighborRegistrationSuccessComponent],
+      declarations: [UserRegistrationSuccessComponent],
       imports: [IonicModule.forRoot()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(NeighborRegistrationSuccessComponent);
+    fixture = TestBed.createComponent(UserRegistrationSuccessComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -4,19 +4,19 @@ import { addIcons } from 'ionicons';
 import { checkmarkCircleOutline } from 'ionicons/icons';
 
 @Component({
-  selector: 'app-neighbor-registration-success',
-  templateUrl: './neighbor-registration-success.component.html',
-  styleUrls: ['./neighbor-registration-success.component.scss'],
+  selector: 'app-user-registration-success',
+  templateUrl: './user-registration-success.component.html',
+  styleUrls: ['./user-registration-success.component.scss'],
   imports: [IonButton, IonContent, IonIcon,],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NeighborRegistrationSuccessComponent implements OnInit {
+export class UserRegistrationSuccessComponent {
+
   private registrationModalCtrl = inject(ModalController);
+
   constructor() {
     addIcons({ checkmarkCircleOutline });
   }
-
-  ngOnInit() {}
 
   closeUserRegistrationModal() {
     this.registrationModalCtrl.dismiss();

@@ -18,7 +18,7 @@
     </div>
     <div class="form-card">
       <form (ngSubmit)="onSubmit()" [formGroup]="registrationForm">
-        @if (step() === 1) {
+        @if (formRegistrationStep() === 1) {
           <div formGroupName="eventHost">
 
             <ion-item-divider>
@@ -122,7 +122,7 @@
           <div class="ion-margin-top">
             <ion-button
               (click)="nextStep()"
-              [disabled]="registrationForm.get('eventHost')?.invalid"
+              [disabled]="!registrationForm.get('eventHost')?.invalid"
               color="blue-mvs"
               expand="block"
               shape="round">
@@ -130,7 +130,7 @@
               <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
             </ion-button>
           </div>
-        } @else if (step() === 2) {
+        } @else if (formRegistrationStep() === 2) {
           <div formGroupName="owner">
             <ion-item-divider>
               <ion-label>Mon Profil</ion-label>
@@ -220,7 +220,7 @@
           </div>
 
           <div class="ion-margin-top action-buttons">
-            <ion-button [disabled]="!registrationForm.valid" class="mvs-bold-btn" color="green-mvs" expand="block"
+            <ion-button [disabled]="registrationForm.valid" class="mvs-bold-btn" color="green-mvs" expand="block"
                         shape="round" type="submit">
               Je m'inscris
             </ion-button>
