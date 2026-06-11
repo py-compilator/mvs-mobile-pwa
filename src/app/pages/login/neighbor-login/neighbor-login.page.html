@@ -7,7 +7,13 @@
       Facebook
     </ion-button>
 
-    <ion-button class="google-btn" color="green-mvs" expand="block" fill="outline" shape="round">
+    <ion-button
+      (click)="handleAuthWithGoogle()"
+      class="google-btn"
+      color="green-mvs"
+      expand="block"
+      fill="outline"
+      shape="round">
       <ion-icon class="google-icon" name="logo-google" slot="start"></ion-icon>
       Google
     </ion-button>
