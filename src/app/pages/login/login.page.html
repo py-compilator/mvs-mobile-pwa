@@ -10,23 +10,23 @@
         </ion-card-header>
 
         <ion-card-content>
-          <ion-segment value="first" color="green-mvs">
-            <ion-segment-button content-id="first" value="first" (click)="setLoginWorkflow(LoginWorkflow.Neighbor)">
+          <ion-segment value="neighbor" color="green-mvs">
+            <ion-segment-button content-id="neighbor" value="neighbor" (click)="setLoginWorkflow(LoginWorkflow.Neighbor)">
               <ion-label class="mvs-bold-label">Voisin</ion-label>
             </ion-segment-button>
-            <ion-segment-button content-id="second" value="second" (click)="setLoginWorkflow(LoginWorkflow.Pro)">
+            <ion-segment-button content-id="pro" value="pro" (click)="setLoginWorkflow(LoginWorkflow.Pro)">
               <ion-label class="mvs-bold-label">Professionel</ion-label>
             </ion-segment-button>
           </ion-segment>
 
           <ion-segment-view>
             <!-- Neighbor User -->
-            <ion-segment-content id="first">
+            <ion-segment-content id="neighbor">
               <app-neighbor-login></app-neighbor-login>
             </ion-segment-content>
 
             <!-- Professional User -->
-            <ion-segment-content id="second">
+            <ion-segment-content id="pro">
               <app-pro-login></app-pro-login>
             </ion-segment-content>
           </ion-segment-view>
