@@ -1,14 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { IonAlert, ModalController } from '@ionic/angular/standalone';
+import { IonAlert, IonContent, ModalController } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-cancel-user-registration-alert',
   templateUrl: './cancel-user-registration-alert.html',
   styleUrls: ['./cancel-user-registration-alert.scss'],
-  imports: [IonAlert],
+  imports: [IonAlert, IonContent],
 })
 export class CancelUserRegistrationAlert {
-
   private registrationModalCtrl = inject(ModalController);
 
   public alertButtons = [
@@ -19,7 +18,7 @@ export class CancelUserRegistrationAlert {
       handler: () => {},
     },
     {
-      text: 'D\'accord',
+      text: "D'accord",
       role: 'confirm',
       cssClass: 'alert-button-confirm',
       handler: () => {
