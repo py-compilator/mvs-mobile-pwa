@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
   IonButton,
@@ -23,11 +23,12 @@ import {
   mailOutline,
   mapOutline,
   personOutline,
-  planetOutline,
+  planetOutline
 } from 'ionicons/icons';
-import { NeighborRegistrationSuccessComponent } from '../../../pages/registration/neighbor-registration-success/neighbor-registration-success.component';
+import {
+  NeighborRegistrationSuccessComponent
+} from '../../../pages/registration/neighbor-registration-success/neighbor-registration-success.component';
 import { MvsIonicLoadingService } from '../../../services/mvs-ionic-loading.service';
-import { CancelUserRegistrationAlert } from '../cancel-user-registration-alert/cancel-user-registration-alert';
 import { MvsIonicAlertService } from '../../../services/mvs-ionic-alert-service';
 import { DEFAULT_ION_LOADING_DURATION } from '../../../interfaces/global-constants';
 
@@ -48,7 +49,6 @@ import { DEFAULT_ION_LOADING_DURATION } from '../../../interfaces/global-constan
     IonHeader,
     IonButtons,
     IonContent,
-    CancelUserRegistrationAlert,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -60,6 +60,16 @@ export class NeighborRegistrationFormComponent {
   private mvsIonAlertService = inject(MvsIonicAlertService);
 
   private registrationFormBuilder = inject(FormBuilder);
+  registrationForm = this.registrationFormBuilder.group({
+    address: this.registrationFormBuilder.group({
+      street: ['', [Validators.required]],
+      postalCode: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      country: ['Suisse', [Validators.required]],
+    }),
+    pseudo: ['', [Validators.required, Validators.minLength(3)]],
+    email: ['', [Validators.required, Validators.email]],
+  });
 
   constructor() {
     addIcons({
@@ -72,17 +82,6 @@ export class NeighborRegistrationFormComponent {
       closeOutline,
     });
   }
-
-  registrationForm = this.registrationFormBuilder.group({
-    address: this.registrationFormBuilder.group({
-      street: ['', [Validators.required]],
-      postalCode: ['', [Validators.required]],
-      city: ['', [Validators.required]],
-      country: ['Suisse', [Validators.required]],
-    }),
-    pseudo: ['', [Validators.required, Validators.minLength(3)]],
-    email: ['', [Validators.required, Validators.email]],
-  });
 
   async onSubmit() {
     if (!this.registrationForm.valid) {
