@@ -15,7 +15,7 @@ export class MvsIonicLoadingService {
     const loading = await this.loadingCtrl.create({
       message: loadingMessage ?? this.defaultLoadingMessage,
       duration: duration ?? this.defaultLoadingDuration,
-      cssClass: 'custom-loading',
+      cssClass: 'mvs-ion-loading',
       showBackdrop: true,
     });
 
