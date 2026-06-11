@@ -39,7 +39,7 @@ import {
 } from 'ionicons/icons';
 import { CancelUserRegistrationAlert } from '../../../pages/registration/cancel-user-registration-alert/cancel-user-registration-alert';
 import { DEFAULT_ION_LOADING_DURATION } from '../../../interfaces/global-constants';
-import { MvsIonicLoadingService } from '../../../services/mvs-ionic-loading.service';
+import { MvsIonicLoadingService } from '../../../services/ionic/mvs-ionic-loading.service';
 import {
   UserRegistrationSuccessComponent
 } from '../../../pages/registration/user-registration-success/user-registration-success.component';

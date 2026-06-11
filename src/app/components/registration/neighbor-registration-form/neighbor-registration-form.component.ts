@@ -28,8 +28,8 @@ import {
 import {
   UserRegistrationSuccessComponent
 } from '../../../pages/registration/user-registration-success/user-registration-success.component';
-import { MvsIonicLoadingService } from '../../../services/mvs-ionic-loading.service';
-import { MvsIonicAlertService } from '../../../services/mvs-ionic-alert-service';
+import { MvsIonicLoadingService } from '../../../services/ionic/mvs-ionic-loading.service';
+import { MvsIonicAlertService } from '../../../services/ionic/mvs-ionic-alert-service';
 import { DEFAULT_ION_LOADING_DURATION } from '../../../interfaces/global-constants';
 
 @Component({
