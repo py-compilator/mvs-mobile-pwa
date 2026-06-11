@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
   IonButton,
@@ -30,6 +30,7 @@ import { MvsIonicLoadingService } from '../../../services/mvs-ionic-loading.serv
 import { CancelUserRegistrationAlert } from '../cancel-user-registration-alert/cancel-user-registration-alert';
 import { MvsIonicAlertService } from '../../../services/mvs-ionic-alert-service';
 import { DEFAULT_ION_LOADING_DURATION } from '../../../interfaces/global-constants';
+import { LoginWorkflow } from '../../../interfaces/global-types';
 
 @Component({
   selector: 'app-neighbor-registration-form',
@@ -60,6 +61,7 @@ export class NeighborRegistrationFormComponent {
   private mvsIonAlertService = inject(MvsIonicAlertService);
 
   private registrationFormBuilder = inject(FormBuilder);
+  @Input() loginWorkflow?: LoginWorkflow;
 
   constructor() {
     addIcons({
@@ -112,7 +114,9 @@ export class NeighborRegistrationFormComponent {
   registerMvsNeighbor() {
     // call register service
     setTimeout(async () => {
-      this.registrationNavCtx.push(this.registrationSuccessComponent);
+      this.registrationNavCtx.push(this.registrationSuccessComponent, {
+        loginWorkflow: this.loginWorkflow,
+      });
       console.log('Neighbor Registration Data:', this.registrationForm.value);
     }, DEFAULT_ION_LOADING_DURATION);
   }

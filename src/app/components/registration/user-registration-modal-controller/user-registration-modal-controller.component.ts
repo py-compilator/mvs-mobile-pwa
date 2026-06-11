@@ -1,4 +1,4 @@
-import { Component, input, OnInit } from '@angular/core';
+import { Component, inject, input, OnInit } from '@angular/core';
 import { IonButton, ModalController } from '@ionic/angular/standalone';
 import { LoginWorkflow } from '../../../interfaces/global-types';
 import { UserRegistrationNavComponent } from '../user-registration-nav/user-registration-nav.component';
@@ -11,8 +11,9 @@ import { UserRegistrationNavComponent } from '../user-registration-nav/user-regi
 })
 export class UserRegistrationModalControllerComponent implements OnInit {
   loginWorkflow = input.required<LoginWorkflow>();
+  private userRegistrationModalController = inject(ModalController);
 
-  constructor(private modalCtrl: ModalController) {}
+  constructor() {}
 
   ngOnInit() {}
 
@@ -25,11 +26,22 @@ export class UserRegistrationModalControllerComponent implements OnInit {
   }
 
   async openNeighborRegistrationModal() {
-    const modal = await this.modalCtrl.create({
+    const modal = await this.userRegistrationModalController.create({
       component: UserRegistrationNavComponent,
+      componentProps: {
+        workflowType: this.loginWorkflow(),
+      },
     });
     modal.present();
   }
 
-  async openProRegistrationModal() {}
+  async openProRegistrationModal() {
+    const modal = await this.userRegistrationModalController.create({
+      component: UserRegistrationNavComponent,
+      componentProps: {
+        workflowType: this.loginWorkflow(),
+      },
+    });
+    modal.present();
+  }
 }

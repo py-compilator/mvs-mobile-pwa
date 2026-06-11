@@ -1,1 +1,5 @@
-<ion-nav [root]="neighborRegistrationFormComponent"></ion-nav>
+@if (workflowType === LoginWorkflow.Neighbor) {
+  <ion-nav [rootParams]="{ loginWorkflow: workflowType }" [root]="neighborRegistrationFormComponent"></ion-nav>
+} @else if (workflowType === LoginWorkflow.Pro) {
+  <ion-nav [rootParams]="{ loginWorkflow: workflowType }" [root]="proRegistrationFormComponent"></ion-nav>
+}
