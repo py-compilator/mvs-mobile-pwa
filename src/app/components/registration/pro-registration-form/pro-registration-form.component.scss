@@ -1,0 +1,60 @@
+.registration-container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  align-items: center;
+}
+
+.header-container {
+  margin-bottom: 8px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-card {
+  background: white;
+  border-radius: 15px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-top: 8px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.custom-input {
+  --background: #f0f2f5;
+  --border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mvs-title {
+  color: var(--ion-color-red-mvs);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.mvs-subtitle {
+  color: var(--ion-color-medium);
+  margin-bottom: 24px;
+  display: block;
+}
+
+ion-item-divider {
+  --background: transparent;
+  --color: var(--ion-color-green-mvs);
+  --padding-start: 0;
+  font-weight: 600;
+  margin-bottom: 8px;
+  border: none;
+}
+
+ion-note {
+  display: block;
+  margin-bottom: 12px;
+}

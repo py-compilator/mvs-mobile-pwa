@@ -5,6 +5,42 @@
  * https://ionicframework.com/docs/theming/dark-mode
  */
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+
+:root {
+  --ion-color-blue-mvs: #141287;
+  --ion-color-blue-mvs-rgb: 20,18,135;
+  --ion-color-blue-mvs-contrast: #ffffff;
+  --ion-color-blue-mvs-contrast-rgb: 255,255,255;
+  --ion-color-blue-mvs-shade: #121077;
+  --ion-color-blue-mvs-tint: #2c2a93;
+
+  --ion-color-orange-mvs: #c88528;
+  --ion-color-orange-mvs-rgb: 200,133,40;
+  --ion-color-orange-mvs-contrast: #000000;
+  --ion-color-orange-mvs-contrast-rgb: 0,0,0;
+  --ion-color-orange-mvs-shade: #b07523;
+  --ion-color-orange-mvs-tint: #ce913e;
+
+  --ion-color-red-mvs: #9b2226;
+  --ion-color-red-mvs-rgb: 155,34,38;
+  --ion-color-red-mvs-contrast: #ffffff;
+  --ion-color-red-mvs-contrast-rgb: 255,255,255;
+  --ion-color-red-mvs-shade: #881e21;
+  --ion-color-red-mvs-tint: #a5383c;
+
+  --ion-color-green-mvs: #2d6a4f;
+  --ion-color-green-mvs-rgb: 45,106,79;
+  --ion-color-green-mvs-contrast: #ffffff;
+  --ion-color-green-mvs-contrast-rgb: 255,255,255;
+  --ion-color-green-mvs-shade: #285d45;
+  --ion-color-green-mvs-tint: #427961;
+
+  --ion-color-purple-blue-mvs: #471287;
+  --ion-color-purple-blue-mvs-rgb: 71,18,135;
+  --ion-color-purple-blue-mvs-contrast: #ffffff;
+  --ion-color-purple-blue-mvs-contrast-rgb: 255,255,255;
+  --ion-color-purple-blue-mvs-shade: #3e1077;
+  --ion-color-purple-blue-mvs-tint: #592a93;
+}

@@ -1,0 +1,42 @@
+<ion-content [fullscreen]="true" class="login-content">
+  <div class="flex-center">
+    <div class="login-container">
+      <div class="logo-circle">
+        <span class="logo-text">M<span class="v-letter">V</span>S</span>
+      </div>
+      <ion-card class="mvs-login-card">
+        <ion-card-header>
+          <ion-card-title>Mon Voisinage en Suisse</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-segment value="first" color="green-mvs">
+            <ion-segment-button content-id="first" value="first" (click)="setLoginWorkflow(LoginWorkflow.Neighbor)">
+              <ion-label>Voisin</ion-label>
+            </ion-segment-button>
+            <ion-segment-button content-id="second" value="second" (click)="setLoginWorkflow(LoginWorkflow.Pro)">
+              <ion-label>Professionel</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+
+          <ion-segment-view>
+            <!-- Neighbor User -->
+            <ion-segment-content id="first">
+              <app-neighbor-login></app-neighbor-login>
+            </ion-segment-content>
+
+            <!-- Professional User -->
+            <ion-segment-content id="second">
+              <app-pro-login></app-pro-login>
+            </ion-segment-content>
+          </ion-segment-view>
+
+          <div class="divider">ou</div>
+
+          <app-user-registration-modal-controller [loginWorkflow]="currentLoginWorkflow"></app-user-registration-modal-controller>
+
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

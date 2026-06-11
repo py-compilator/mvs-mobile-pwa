@@ -1,0 +1,20 @@
+.custom-input {
+  --background: #f0f2f5;
+  --border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .forgot-password {
+    text-transform: inherit;
+  }
+}
+
+.login-btn {
+  font-weight: 600;
+}
+

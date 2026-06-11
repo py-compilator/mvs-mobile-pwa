@@ -1,0 +1,17 @@
+ion-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: none;
+  height: 100%;
+}
+
+ion-card-content {
+  width: 100%;
+}
+
+.welcome {
+  color: var(--ion-color-green-mvs);
+}
