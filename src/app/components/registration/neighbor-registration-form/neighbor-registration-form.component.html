@@ -1,13 +1,14 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-button (click)="cancel()" [strong]="true">Annuler</ion-button>
+      <ion-button (click)="cancelNeighborRegistration()" [strong]="true">Annuler</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <div class="registration-container">
+    <app-cancel-user-registration-alert></app-cancel-user-registration-alert>
     <div class="header-container">
       <h2 class="mvs-title ion-no-margin">Inscription</h2>
       <span class="mvs-subtitle">Compte MVS Voisin</span>

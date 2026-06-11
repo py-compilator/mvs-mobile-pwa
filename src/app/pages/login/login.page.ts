@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { LoginWorkflow } from '../../interfaces/login-workflow';
+import { Component, signal } from '@angular/core';
+import { LoginWorkflow } from '../../interfaces/global-types';
 import {
   IonCard,
   IonCardContent,
@@ -41,7 +41,8 @@ import { UserRegistrationModalControllerComponent } from '../../components/regis
   ],
 })
 export class LoginPage {
-  protected currentLoginWorkflow: LoginWorkflow = LoginWorkflow.Neighbor;
+  protected currentLoginWorkflow = signal<LoginWorkflow>(LoginWorkflow.Neighbor);
+
   protected readonly LoginWorkflow = LoginWorkflow;
 
   constructor() {
@@ -49,6 +50,6 @@ export class LoginPage {
   }
 
   setLoginWorkflow(loginWorkflow: LoginWorkflow) {
-    this.currentLoginWorkflow = loginWorkflow;
+    this.currentLoginWorkflow.set(loginWorkflow);
   }
 }

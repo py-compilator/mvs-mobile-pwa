@@ -1,7 +1,6 @@
 import { Component, input, OnInit } from '@angular/core';
 import { IonButton, ModalController } from '@ionic/angular/standalone';
-import { LoginWorkflow } from '../../../interfaces/login-workflow';
-import { NeighborRegistrationFormComponent } from '../neighbor-registration-form/neighbor-registration-form.component';
+import { LoginWorkflow } from '../../../interfaces/global-types';
 import { UserRegistrationNavComponent } from '../user-registration-nav/user-registration-nav.component';
 
 @Component({

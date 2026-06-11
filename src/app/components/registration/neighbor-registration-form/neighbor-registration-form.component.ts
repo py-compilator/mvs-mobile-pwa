@@ -25,8 +25,11 @@ import {
   personOutline,
   planetOutline,
 } from 'ionicons/icons';
-import { NeighborRegistrationSuccessComponent } from '../neighbor-registration-success/neighbor-registration-success.component';
+import { NeighborRegistrationSuccessComponent } from '../../../pages/registration/neighbor-registration-success/neighbor-registration-success.component';
 import { MvsIonicLoadingService } from '../../../services/mvs-ionic-loading.service';
+import { CancelUserRegistrationAlert } from '../cancel-user-registration-alert/cancel-user-registration-alert';
+import { MvsIonicAlertService } from '../../../services/mvs-ionic-alert-service';
+import { DEFAULT_ION_LOADING_DURATION } from '../../../interfaces/global-constants';
 
 @Component({
   selector: 'app-neighbor-registration-form',
@@ -45,15 +48,18 @@ import { MvsIonicLoadingService } from '../../../services/mvs-ionic-loading.serv
     IonHeader,
     IonButtons,
     IonContent,
+    CancelUserRegistrationAlert,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NeighborRegistrationFormComponent {
   private registrationModalCtrl = inject(ModalController);
-  private loadingService = inject(MvsIonicLoadingService);
-  private registrationNav = inject(IonNav);
-  private registrationFormBuilder = inject(FormBuilder);
+  private registrationNavCtx = inject(IonNav);
   private registrationSuccessComponent = NeighborRegistrationSuccessComponent;
+  private mvsIonLoadingService = inject(MvsIonicLoadingService);
+  private mvsIonAlertService = inject(MvsIonicAlertService);
+
+  private registrationFormBuilder = inject(FormBuilder);
 
   constructor() {
     addIcons({
@@ -81,23 +87,33 @@ export class NeighborRegistrationFormComponent {
   async onSubmit() {
     if (!this.registrationForm.valid) {
       try {
-        this.loadingService.presentLoadingSpinner('Création de ton compte en cours...', 5000);
-        this.registerNeighborUser();
+        this.mvsIonLoadingService.presentIonicLoadingSpinner(
+          'Création de ton compte en cours...',
+          DEFAULT_ION_LOADING_DURATION,
+        );
+        this.registerMvsNeighbor();
       } catch (error) {
         console.error('Error during neighbor registration:', error);
       }
     }
   }
 
-  cancel() {
-    return this.registrationModalCtrl.dismiss(null, 'cancel');
+  cancelNeighborRegistration() {
+    this.mvsIonAlertService.presentIonicAlertMessage(
+      'Annulation',
+      'Voulez-vous vraiment annuler la création de votre compte ?',
+      undefined,
+      () => {
+        this.registrationModalCtrl.dismiss(null, 'cancel');
+      },
+    );
   }
 
-  registerNeighborUser() {
+  registerMvsNeighbor() {
     // call register service
     setTimeout(async () => {
-      this.registrationNav.push(this.registrationSuccessComponent);
+      this.registrationNavCtx.push(this.registrationSuccessComponent);
       console.log('Neighbor Registration Data:', this.registrationForm.value);
-    }, 5000);
+    }, DEFAULT_ION_LOADING_DURATION);
   }
 }
