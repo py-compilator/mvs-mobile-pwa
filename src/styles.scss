@@ -91,8 +91,8 @@ ion-alert.custom-alert {
 }
 
 .custom-alert button.alert-button.alert-button-confirm {
-  background-color: var(--ion-color-red-mvs);
-  color: white;
+  color: var(--ion-color-red-mvs);
+  font-weight: 700;
 }
 
 .md .custom-alert button.alert-button.alert-button-confirm {
@@ -107,6 +107,9 @@ ion-alert.custom-alert {
   border-right: 0;
   border-bottom-left-radius: 13px;
   border-top-left-radius: 13px;
+  background-color: var(--ion-color-green-mvs);
+  color: white;
+  font-weight: 700;
 }
 
 .ios .custom-alert button.alert-button.alert-button-confirm {
