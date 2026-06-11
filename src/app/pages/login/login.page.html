@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true" class="login-content">
-  <div class="flex-center">
+  <div class="mvs-flex-center">
     <div class="login-container">
       <div class="logo-circle">
         <span class="logo-text">M<span class="v-letter">V</span>S</span>
@@ -12,10 +12,10 @@
         <ion-card-content>
           <ion-segment value="first" color="green-mvs">
             <ion-segment-button content-id="first" value="first" (click)="setLoginWorkflow(LoginWorkflow.Neighbor)">
-              <ion-label>Voisin</ion-label>
+              <ion-label class="mvs-bold-label">Voisin</ion-label>
             </ion-segment-button>
             <ion-segment-button content-id="second" value="second" (click)="setLoginWorkflow(LoginWorkflow.Pro)">
-              <ion-label>Professionel</ion-label>
+              <ion-label class="mvs-bold-label">Professionel</ion-label>
             </ion-segment-button>
           </ion-segment>
 

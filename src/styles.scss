@@ -1,6 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 
-ion-button.btn-gras::part(native) {
+.mvs-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* MVS ion-loading custom styles */
+
+ion-loading.mvs-ion-loading {
+  --background: #e3edff;
+  --spinner-color: #1c6dff;
+  color: #1c6dff;
+}
+
+/* MVS ion-button custom styles */
+
+ion-button.mvs-bold-btn::part(native) {
   font-weight: 700;
 }
 
@@ -12,28 +29,11 @@ ion-button.mvs-danger-btn::part(native) {
   --background: var(--ion-color-red-mvs);
 }
 
-ion-loading.custom-loading {
-  --background: #e3edff;
-  --spinner-color: #1c6dff;
-
-  color: #1c6dff;
+ion-button.mvs-sky-btn::part(native) {
+  --background: var(--ion-color-blue-mvs);
 }
 
-.flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.ion-color-favorite {
-  --ion-color-base: var(--ion-color-favorite);
-  --ion-color-base-rgb: var(--ion-color-favorite-rgb);
-  --ion-color-contrast: var(--ion-color-favorite-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-favorite-contrast-rgb);
-  --ion-color-shade: var(--ion-color-favorite-shade);
-  --ion-color-tint: var(--ion-color-favorite-tint);
-}
+/* MVS ion-color Css Properties */
 
 .ion-color-blue-mvs {
   --ion-color-base: var(--ion-color-blue-mvs);
@@ -80,7 +80,7 @@ ion-loading.custom-loading {
   --ion-color-tint: var(--ion-color-purple-blue-mvs-tint);
 }
 
-// Custom Ion Alert
+/* MVS ion-alert Css Properties */
 
 ion-alert.custom-alert {
   --backdrop-opacity: 0.7;
@@ -113,3 +113,5 @@ button.alert-button.alert-button-confirm {
   border-bottom-right-radius: 13px;
   border-top-right-radius: 13px;
 }
+
+/* End */
