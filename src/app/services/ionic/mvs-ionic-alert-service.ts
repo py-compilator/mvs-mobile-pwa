@@ -4,7 +4,7 @@ import {
   DEFAULT_ION_ALERT_HEADER_MESSAGE,
   DEFAULT_ION_ALERT_MESSAGE,
   DEFAULT_ION_ALERT_SUB_HEADER_MESSAGE,
-} from '../interfaces/global-constants';
+} from '../../interfaces/global-constants';
 
 @Injectable({
   providedIn: 'root',

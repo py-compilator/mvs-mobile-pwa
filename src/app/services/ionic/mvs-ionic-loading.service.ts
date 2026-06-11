@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { LoadingController } from '@ionic/angular/standalone';
-import { DEFAULT_ION_LOADING_MESSAGE, DEFAULT_ION_LOADING_DURATION } from '../interfaces/global-constants';
+import { DEFAULT_ION_LOADING_MESSAGE, DEFAULT_ION_LOADING_DURATION } from '../../interfaces/global-constants';
 
 @Injectable({
   providedIn: 'root',
