@@ -1,216 +1,237 @@
-<div class="registration-container">
-  <div class="header-container">
-    <h2 class="mvs-title ion-no-margin">Inscription</h2>
-    <span class="mvs-subtitle">Compte MVS Professionnel</span>
+<script src="pro-registration-form.component.ts"></script>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button [strong]="true" id="cancel-user-registration-alert">Annuler</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="registration-container">
+
+    <app-cancel-user-registration-alert></app-cancel-user-registration-alert>
+
+    <div class="header-container">
+      <h2 class="mvs-title ion-no-margin">Inscription</h2>
+      <span class="mvs-subtitle">Compte MVS Professionnel</span>
+    </div>
+    <div class="form-card">
+      <form (ngSubmit)="onSubmit()" [formGroup]="registrationForm">
+        @if (step() === 1) {
+          <div formGroupName="eventHost">
+
+            <ion-item-divider>
+              <ion-label>Mon Hôte</ion-label>
+            </ion-item-divider>
+
+            <ion-item class="custom-input" lines="none">
+              <ion-icon color="medium" name="bookmark-outline" slot="start"></ion-icon>
+              <ion-input
+                aria-label="Libellé"
+                formControlName="label"
+                placeholder="Libellé (ex: Nom de l'établissement)"
+              ></ion-input>
+            </ion-item>
+            @if (registrationForm.get('eventHost.label')?.invalid && registrationForm.get('eventHost.label')?.touched) {
+              <ion-note class="ion-margin-horizontal" color="danger">
+                Le libellé est requis.
+              </ion-note>
+            }
+
+            <ion-item class="custom-input" lines="none">
+              <ion-icon color="medium" name="briefcase-outline" slot="start"></ion-icon>
+              <ion-select
+                aria-label="Type d'activité"
+                formControlName="activityType"
+                interface="popover"
+                placeholder="Type d'activité"
+              >
+                @for (activity of activityTypes; track activity.value) {
+                  <ion-select-option [value]="activity.value">{{ activity.label }}</ion-select-option>
+                }
+              </ion-select>
+            </ion-item>
+            @if (registrationForm.get('eventHost.activityType')?.invalid && registrationForm.get('eventHost.activityType')?.touched) {
+              <ion-note class="ion-margin-horizontal" color="danger">
+                Le type d'activité est requis.
+              </ion-note>
+            }
+
+            <ion-item-divider>
+              <ion-label>J'accueille les voisins ici</ion-label>
+            </ion-item-divider>
+
+            <ion-item class="custom-input" lines="none">
+              <ion-icon color="medium" name="location-outline" slot="start"></ion-icon>
+              <ion-input
+                aria-label="Rue"
+                formControlName="street"
+                placeholder="Rue"
+              ></ion-input>
+            </ion-item>
+            @if (registrationForm.get('eventHost.street')?.invalid && registrationForm.get('eventHost.street')?.touched) {
+              <ion-note class="ion-margin-horizontal" color="danger">
+                La rue est requise.
+              </ion-note>
+            }
+
+            <ion-item class="custom-input" lines="none">
+              <ion-icon color="medium" name="map-outline" slot="start"></ion-icon>
+              <ion-input
+                aria-label="Code Postal"
+                formControlName="postalCode"
+                placeholder="Code Postal"
+              ></ion-input>
+            </ion-item>
+            @if (registrationForm.get('eventHost.postalCode')?.invalid && registrationForm.get('eventHost.postalCode')?.touched) {
+              <ion-note class="ion-margin-horizontal" color="danger">
+                Le code postal est requis.
+              </ion-note>
+            }
+
+            <ion-item class="custom-input" lines="none">
+              <ion-icon color="medium" name="business-outline" slot="start"></ion-icon>
+              <ion-input
+                aria-label="Ville"
+                formControlName="city"
+                placeholder="Ville"
+              ></ion-input>
+            </ion-item>
+            @if (registrationForm.get('eventHost.city')?.invalid && registrationForm.get('eventHost.city')?.touched) {
+              <ion-note class="ion-margin-horizontal" color="danger">
+                La ville est requise.
+              </ion-note>
+            }
+
+            <ion-item class="custom-input" lines="none">
+              <ion-icon color="medium" name="planet-outline" slot="start"></ion-icon>
+              <ion-input
+                aria-label="Pays"
+                formControlName="country"
+                placeholder="Pays"
+              ></ion-input>
+            </ion-item>
+            @if (registrationForm.get('eventHost.country')?.invalid && registrationForm.get('eventHost.country')?.touched) {
+              <ion-note class="ion-margin-horizontal" color="danger">
+                Le pays est requis.
+              </ion-note>
+            }
+          </div>
+
+          <div class="ion-margin-top">
+            <ion-button
+              (click)="nextStep()"
+              [disabled]="registrationForm.get('eventHost')?.invalid"
+              color="blue-mvs"
+              expand="block"
+              shape="round">
+              Suivant
+              <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+            </ion-button>
+          </div>
+        } @else if (step() === 2) {
+          <div formGroupName="owner">
+            <ion-item-divider>
+              <ion-label>Mon Profil</ion-label>
+            </ion-item-divider>
+
+            <ion-item class="custom-input" lines="none">
+              <ion-icon color="medium" name="person-outline" slot="start"></ion-icon>
+              <ion-input
+                aria-label="Nom"
+                formControlName="lastName"
+                placeholder="Nom"
+              ></ion-input>
+            </ion-item>
+            @if (registrationForm.get('owner.lastName')?.invalid && registrationForm.get('owner.lastName')?.touched) {
+              <ion-note class="ion-margin-horizontal" color="danger">
+                Le nom est requis.
+              </ion-note>
+            }
+
+            <ion-item class="custom-input" lines="none">
+              <ion-icon color="medium" name="person-outline" slot="start"></ion-icon>
+              <ion-input
+                aria-label="Prénom"
+                formControlName="firstName"
+                placeholder="Prénom"
+              ></ion-input>
+            </ion-item>
+            @if (registrationForm.get('owner.firstName')?.invalid && registrationForm.get('owner.firstName')?.touched) {
+              <ion-note class="ion-margin-horizontal" color="danger">
+                Le prénom est requis.
+              </ion-note>
+            }
+
+            <ion-item-divider>
+              <ion-label>Mon compte utilisateur</ion-label>
+            </ion-item-divider>
+
+            <ion-item class="custom-input" lines="none">
+              <ion-icon color="medium" name="mail-outline" slot="start"></ion-icon>
+              <ion-input
+                aria-label="Email"
+                formControlName="email"
+                placeholder="Email"
+                type="email"
+              ></ion-input>
+            </ion-item>
+            @if (registrationForm.get('owner.email')?.invalid && registrationForm.get('owner.email')?.touched) {
+              <ion-note class="ion-margin-horizontal" color="danger">
+                Un email valide est requis.
+              </ion-note>
+            }
+
+            <ion-item class="custom-input" lines="none">
+              <ion-icon color="medium" name="lock-closed-outline" slot="start"></ion-icon>
+              <ion-input
+                aria-label="Mot de passe"
+                formControlName="password"
+                placeholder="Mot de passe"
+                type="password"
+              >
+                <ion-input-password-toggle color="green-mvs" slot="end"></ion-input-password-toggle>
+              </ion-input>
+            </ion-item>
+            @if (registrationForm.get('owner.password')?.invalid && registrationForm.get('owner.password')?.touched) {
+              <ion-note class="ion-margin-horizontal" color="danger">
+                Mot de passe requis (min. 6 caractères).
+              </ion-note>
+            }
+
+            <ion-item class="custom-input" lines="none">
+              <ion-icon color="medium" name="lock-closed-outline" slot="start"></ion-icon>
+              <ion-input
+                aria-label="Confirmer le mot de passe"
+                formControlName="confirmPassword"
+                placeholder="Confirmer le mot de passe"
+                type="password"
+              >
+                <ion-input-password-toggle color="green-mvs" slot="end"></ion-input-password-toggle>
+              </ion-input>
+            </ion-item>
+
+            @if (registrationForm.get('owner')?.hasError('passwordMismatch') && (registrationForm.get('owner.confirmPassword')?.touched || registrationForm.get('owner.confirmPassword')?.touched)) {
+              <ion-note class="ion-margin-horizontal" color="danger">
+                Les mots de passe sont différents.
+              </ion-note>
+            }
+          </div>
+
+          <div class="ion-margin-top action-buttons">
+            <ion-button [disabled]="!registrationForm.valid" class="mvs-bold-btn" color="green-mvs" expand="block"
+                        shape="round" type="submit">
+              Je m'inscris
+            </ion-button>
+            <ion-button (click)="previousStep()" color="red-mvs" fill="clear" size="small">
+              <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+              Retour
+            </ion-button>
+          </div>
+        }
+      </form>
+    </div>
   </div>
-  <div class="form-card">
-    <form (ngSubmit)="onSubmit()" [formGroup]="registrationForm">
-      @if (step() === 1) {
-        <div formGroupName="eventHost">
+</ion-content>
 
-          <ion-item-divider>
-            <ion-label>Mon Hôte</ion-label>
-          </ion-item-divider>
-
-          <ion-item class="custom-input" lines="none">
-            <ion-icon color="medium" name="bookmark-outline" slot="start"></ion-icon>
-            <ion-input
-              aria-label="Libellé"
-              formControlName="label"
-              placeholder="Libellé (ex: Nom de l'établissement)"
-            ></ion-input>
-          </ion-item>
-          @if (registrationForm.get('eventHost.label')?.invalid && registrationForm.get('eventHost.label')?.touched) {
-            <ion-note class="ion-margin-horizontal" color="danger">
-              Le libellé est requis.
-            </ion-note>
-          }
-
-          <ion-item class="custom-input" lines="none">
-            <ion-icon color="medium" name="briefcase-outline" slot="start"></ion-icon>
-            <ion-select
-              aria-label="Type d'activité"
-              formControlName="activityType"
-              interface="popover"
-              placeholder="Type d'activité"
-            >
-              @for (activity of activityTypes; track activity.value) {
-                <ion-select-option [value]="activity.value">{{ activity.label }}</ion-select-option>
-              }
-            </ion-select>
-          </ion-item>
-          @if (registrationForm.get('eventHost.activityType')?.invalid && registrationForm.get('eventHost.activityType')?.touched) {
-            <ion-note class="ion-margin-horizontal" color="danger">
-              Le type d'activité est requis.
-            </ion-note>
-          }
-
-          <ion-item-divider>
-            <ion-label>J'accueille les voisins ici</ion-label>
-          </ion-item-divider>
-
-          <ion-item class="custom-input" lines="none">
-            <ion-icon color="medium" name="location-outline" slot="start"></ion-icon>
-            <ion-input
-              aria-label="Rue"
-              formControlName="street"
-              placeholder="Rue"
-            ></ion-input>
-          </ion-item>
-          @if (registrationForm.get('eventHost.street')?.invalid && registrationForm.get('eventHost.street')?.touched) {
-            <ion-note class="ion-margin-horizontal" color="danger">
-              La rue est requise.
-            </ion-note>
-          }
-
-          <ion-item class="custom-input" lines="none">
-            <ion-icon color="medium" name="map-outline" slot="start"></ion-icon>
-            <ion-input
-              aria-label="Code Postal"
-              formControlName="postalCode"
-              placeholder="Code Postal"
-            ></ion-input>
-          </ion-item>
-          @if (registrationForm.get('eventHost.postalCode')?.invalid && registrationForm.get('eventHost.postalCode')?.touched) {
-            <ion-note class="ion-margin-horizontal" color="danger">
-              Le code postal est requis.
-            </ion-note>
-          }
-
-          <ion-item class="custom-input" lines="none">
-            <ion-icon color="medium" name="business-outline" slot="start"></ion-icon>
-            <ion-input
-              aria-label="Ville"
-              formControlName="city"
-              placeholder="Ville"
-            ></ion-input>
-          </ion-item>
-          @if (registrationForm.get('eventHost.city')?.invalid && registrationForm.get('eventHost.city')?.touched) {
-            <ion-note class="ion-margin-horizontal" color="danger">
-              La ville est requise.
-            </ion-note>
-          }
-
-          <ion-item class="custom-input" lines="none">
-            <ion-icon color="medium" name="planet-outline" slot="start"></ion-icon>
-            <ion-input
-              aria-label="Pays"
-              formControlName="country"
-              placeholder="Pays"
-            ></ion-input>
-          </ion-item>
-          @if (registrationForm.get('eventHost.country')?.invalid && registrationForm.get('eventHost.country')?.touched) {
-            <ion-note class="ion-margin-horizontal" color="danger">
-              Le pays est requis.
-            </ion-note>
-          }
-        </div>
-
-        <div class="ion-margin-top">
-          <ion-button (click)="nextStep()" [disabled]="registrationForm.get('eventHost')?.invalid" color="blue-mvs" expand="block" shape="round">
-            Suivant
-            <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
-          </ion-button>
-        </div>
-      } @else if (step() === 2) {
-        <div formGroupName="owner">
-          <ion-item-divider>
-            <ion-label>Mon Profil</ion-label>
-          </ion-item-divider>
-
-          <ion-item class="custom-input" lines="none">
-            <ion-icon color="medium" name="person-outline" slot="start"></ion-icon>
-            <ion-input
-              aria-label="Nom"
-              formControlName="lastName"
-              placeholder="Nom"
-            ></ion-input>
-          </ion-item>
-          @if (registrationForm.get('owner.lastName')?.invalid && registrationForm.get('owner.lastName')?.touched) {
-            <ion-note class="ion-margin-horizontal" color="danger">
-              Le nom est requis.
-            </ion-note>
-          }
-
-          <ion-item class="custom-input" lines="none">
-            <ion-icon color="medium" name="person-outline" slot="start"></ion-icon>
-            <ion-input
-              aria-label="Prénom"
-              formControlName="firstName"
-              placeholder="Prénom"
-            ></ion-input>
-          </ion-item>
-          @if (registrationForm.get('owner.firstName')?.invalid && registrationForm.get('owner.firstName')?.touched) {
-            <ion-note class="ion-margin-horizontal" color="danger">
-              Le prénom est requis.
-            </ion-note>
-          }
-
-          <ion-item-divider>
-            <ion-label>Mon compte utilisateur</ion-label>
-          </ion-item-divider>
-
-          <ion-item class="custom-input" lines="none">
-            <ion-icon color="medium" name="mail-outline" slot="start"></ion-icon>
-            <ion-input
-              aria-label="Email"
-              formControlName="email"
-              placeholder="Email"
-              type="email"
-            ></ion-input>
-          </ion-item>
-          @if (registrationForm.get('owner.email')?.invalid && registrationForm.get('owner.email')?.touched) {
-            <ion-note class="ion-margin-horizontal" color="danger">
-              Un email valide est requis.
-            </ion-note>
-          }
-
-          <ion-item class="custom-input" lines="none">
-            <ion-icon color="medium" name="lock-closed-outline" slot="start"></ion-icon>
-            <ion-input
-              aria-label="Mot de passe"
-              formControlName="password"
-              placeholder="Mot de passe"
-              type="password"
-            >
-              <ion-input-password-toggle color="green-mvs" slot="end"></ion-input-password-toggle>
-            </ion-input>
-          </ion-item>
-          @if (registrationForm.get('owner.password')?.invalid && registrationForm.get('owner.password')?.touched) {
-            <ion-note class="ion-margin-horizontal" color="danger">
-              Mot de passe requis (min. 6 caractères).
-            </ion-note>
-          }
-
-          <ion-item class="custom-input" lines="none">
-            <ion-icon color="medium" name="lock-closed-outline" slot="start"></ion-icon>
-            <ion-input
-              aria-label="Confirmer le mot de passe"
-              formControlName="confirmPassword"
-              placeholder="Confirmer le mot de passe"
-              type="password"
-            >
-              <ion-input-password-toggle color="green-mvs" slot="end"></ion-input-password-toggle>
-            </ion-input>
-          </ion-item>
-
-          @if (registrationForm.get('owner')?.hasError('passwordMismatch') && (registrationForm.get('owner.confirmPassword')?.touched || registrationForm.get('owner.confirmPassword')?.touched)) {
-            <ion-note class="ion-margin-horizontal" color="danger">
-              Les mots de passe sont différents.
-            </ion-note>
-          }
-        </div>
-
-        <div class="ion-margin-top action-buttons">
-          <ion-button [disabled]="!registrationForm.valid" class="mvs-bold-btn" color="green-mvs" expand="block" shape="round" type="submit">
-            Je m'inscris
-          </ion-button>
-          <ion-button (click)="previousStep()" color="red-mvs" fill="clear" size="small">
-            <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
-            Retour
-          </ion-button>
-        </div>
-      }
-    </form>
-  </div>
-</div>

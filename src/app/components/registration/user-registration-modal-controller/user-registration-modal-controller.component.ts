@@ -29,7 +29,7 @@ export class UserRegistrationModalControllerComponent implements OnInit {
     const modal = await this.userRegistrationModalController.create({
       component: UserRegistrationNavComponent,
       componentProps: {
-        workflowType: this.loginWorkflow(),
+        ionicRegistrationWorkflow: this.loginWorkflow(),
       },
     });
     modal.present();
@@ -39,7 +39,7 @@ export class UserRegistrationModalControllerComponent implements OnInit {
     const modal = await this.userRegistrationModalController.create({
       component: UserRegistrationNavComponent,
       componentProps: {
-        workflowType: this.loginWorkflow(),
+        ionicRegistrationWorkflow: this.loginWorkflow(),
       },
     });
     modal.present();

@@ -22,7 +22,7 @@ export class MvsIonicAlertService {
 
   constructor() {}
 
-  async presentIonicAlertMessage(
+  async buildAndPresentIonicAlertMessage(
     header?: string,
     subHeader?: string,
     message?: string,

@@ -1,6 +1,5 @@
-import { Component, OnInit, output } from '@angular/core';
-import { IonAlert, IonButton } from '@ionic/angular/standalone';
-import { OverlayEventDetail } from '@ionic/core';
+import { Component, output } from '@angular/core';
+import { IonAlert } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-cancel-user-registration-alert',
@@ -9,24 +8,18 @@ import { OverlayEventDetail } from '@ionic/core';
   imports: [IonAlert],
 })
 export class CancelUserRegistrationAlert {
-
   onUserRegistrationWorkflowCancelled = output<boolean>();
 
   public alertButtons = [
     {
       text: 'Non',
       role: 'cancel',
-      handler: () => {
-        console.log('User registration maintained !');
-      },
+      handler: () => {},
     },
     {
       text: 'Oui',
       role: 'confirm',
-      handler: () => {
-        this.onUserRegistrationWorkflowCancelled.emit(true);
-        console.log('User registration cancelled !');
-      },
+      handler: () => {},
     },
   ];
 }

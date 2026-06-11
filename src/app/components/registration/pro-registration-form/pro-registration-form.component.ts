@@ -8,20 +8,26 @@ import {
 } from '@angular/forms';
 import {
   IonButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonIcon,
   IonInput,
+  IonInputPasswordToggle,
   IonItem,
   IonItemDivider,
   IonLabel,
   IonNote,
   IonSelect,
   IonSelectOption,
-  IonIcon,
-  IonInputPasswordToggle,
+  IonToolbar,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import {
   arrowBackOutline,
   arrowForwardOutline,
+  bookmarkOutline,
+  briefcaseOutline,
   businessOutline,
   locationOutline,
   lockClosedOutline,
@@ -29,9 +35,8 @@ import {
   mapOutline,
   personOutline,
   planetOutline,
-  briefcaseOutline,
-  bookmarkOutline,
 } from 'ionicons/icons';
+import { CancelUserRegistrationAlert } from '../cancel-user-registration-alert/cancel-user-registration-alert';
 
 @Component({
   selector: 'app-pro-registration-form',
@@ -49,30 +54,16 @@ import {
     IonButton,
     IonIcon,
     IonInputPasswordToggle,
+    IonButtons,
+    IonHeader,
+    IonToolbar,
+    IonContent,
+    CancelUserRegistrationAlert,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProRegistrationFormComponent {
-  private formBuilder = inject(FormBuilder);
-
   step = signal(1);
-
-  constructor() {
-    addIcons({
-      arrowBackOutline,
-      arrowForwardOutline,
-      personOutline,
-      mailOutline,
-      lockClosedOutline,
-      briefcaseOutline,
-      locationOutline,
-      mapOutline,
-      businessOutline,
-      planetOutline,
-      bookmarkOutline,
-    });
-  }
-
   activityTypes = [
     { value: 'bar', label: 'Bar' },
     { value: 'karaoke', label: 'Karaoke' },
@@ -81,7 +72,7 @@ export class ProRegistrationFormComponent {
     { value: 'cinéma', label: 'Cinéma' },
     { value: 'théatre', label: 'Théatre' },
   ];
-
+  private formBuilder = inject(FormBuilder);
   registrationForm = this.formBuilder.group({
     eventHost: this.formBuilder.group({
       label: ['', [Validators.required]],
@@ -105,10 +96,20 @@ export class ProRegistrationFormComponent {
     ),
   });
 
-  private passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
-    const password = control.get('password')?.value;
-    const confirmPassword = control.get('confirmPassword')?.value;
-    return password === confirmPassword ? null : { passwordMismatch: true };
+  constructor() {
+    addIcons({
+      arrowBackOutline,
+      arrowForwardOutline,
+      personOutline,
+      mailOutline,
+      lockClosedOutline,
+      briefcaseOutline,
+      locationOutline,
+      mapOutline,
+      businessOutline,
+      planetOutline,
+      bookmarkOutline,
+    });
   }
 
   nextStep() {
@@ -123,5 +124,12 @@ export class ProRegistrationFormComponent {
     if (this.registrationForm.valid) {
       console.log(this.registrationForm.value);
     }
+  }
+
+  private passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
+    const password = control.get('password')?.value;
+    const confirmPassword = control.get('confirmPassword')?.value;
+    // return password === confirmPassword ? null : { passwordMismatch: true };
+    return null;
   }
 }

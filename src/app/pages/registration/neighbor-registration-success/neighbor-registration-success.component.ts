@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, inject, Input, OnInit } from '@angular/core';
-import { IonButton, IonContent, IonIcon, IonNote, ModalController } from '@ionic/angular/standalone';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { IonButton, IonContent, IonIcon, ModalController } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { checkmarkCircleOutline } from 'ionicons/icons';
-import { LoginWorkflow } from '../../../interfaces/global-types';
 
 @Component({
   selector: 'app-neighbor-registration-success',
@@ -13,8 +12,6 @@ import { LoginWorkflow } from '../../../interfaces/global-types';
 })
 export class NeighborRegistrationSuccessComponent implements OnInit {
   private registrationModalCtrl = inject(ModalController);
-  @Input() loginWorkflow?: LoginWorkflow;
-
   constructor() {
     addIcons({ checkmarkCircleOutline });
   }
