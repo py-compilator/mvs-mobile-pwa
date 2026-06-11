@@ -1,5 +1,5 @@
-import { Component, output } from '@angular/core';
-import { IonAlert } from '@ionic/angular/standalone';
+import { Component, inject, output } from '@angular/core';
+import { IonAlert, ModalController } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-cancel-user-registration-alert',
@@ -8,18 +8,23 @@ import { IonAlert } from '@ionic/angular/standalone';
   imports: [IonAlert],
 })
 export class CancelUserRegistrationAlert {
-  onUserRegistrationWorkflowCancelled = output<boolean>();
+
+  private registrationModalCtrl = inject(ModalController);
 
   public alertButtons = [
     {
       text: 'Non',
       role: 'cancel',
+      cssClass: 'alert-button-cancel',
       handler: () => {},
     },
     {
       text: 'Oui',
       role: 'confirm',
-      handler: () => {},
+      cssClass: 'alert-button-confirm',
+      handler: () => {
+        this.registrationModalCtrl.dismiss();
+      },
     },
   ];
 }

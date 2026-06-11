@@ -40,6 +40,7 @@ export class MvsIonicAlertService {
       header: header ?? DEFAULT_ION_ALERT_HEADER_MESSAGE,
       subHeader: subHeader ?? DEFAULT_ION_ALERT_SUB_HEADER_MESSAGE,
       message: message ?? DEFAULT_ION_ALERT_MESSAGE,
+      cssClass: 'custom-alert',
       buttons: [...MvsIonicAlertService.DEFAULT_OK_CANCEL_ALERT_BUTTONS, confirmActionHandler],
     });
 
