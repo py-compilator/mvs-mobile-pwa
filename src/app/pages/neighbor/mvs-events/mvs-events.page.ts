@@ -1,15 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
-import { IonAvatar, IonContent, IonFab, IonFabButton, IonFabList, IonHeader, IonIcon, IonInfiniteScroll,
+import { IonAvatar, IonContent, IonHeader, IonIcon, IonInfiniteScroll,
   IonInfiniteScrollContent, IonItem,
   IonLabel, IonList, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { addIcons,  } from 'ionicons';
 import {
-  chevronDownCircle,
   chevronForwardCircle,
   chevronUpCircle,
-  colorPalette,
-  document,
-  globe,
 } from 'ionicons/icons';
 
 import { InfiniteScrollCustomEvent } from '@ionic/angular';
@@ -23,8 +19,6 @@ import { InfiniteScrollCustomEvent } from '@ionic/angular';
     IonToolbar,
     IonTitle,
     IonContent,
-    IonFab,
-    IonFabButton,
     IonIcon,
     IonList,
     IonItem,
@@ -32,7 +26,6 @@ import { InfiniteScrollCustomEvent } from '@ionic/angular';
     IonLabel,
     IonInfiniteScroll,
     IonInfiniteScrollContent,
-    IonFabList,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -47,12 +40,8 @@ export class MvsEventsPage implements OnInit {
      * referenced by name anywhere in your application.
      */
     addIcons({
-      chevronDownCircle,
       chevronForwardCircle,
       chevronUpCircle,
-      colorPalette,
-      document,
-      globe,
     });
   }
 

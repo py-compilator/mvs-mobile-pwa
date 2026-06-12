@@ -21,9 +21,9 @@ ion-tab-bar {
 }
 
 ion-tab-button {
-  --color: #a0a0a0;
-  --color-selected: var(--ion-color-blue-mvs);
-  --ripple-color: var(--ion-color-blue-mvs);
+  --color: var(--ion-color-green-mvs);
+  --color-selected: var(--ion-color-red-mvs);
+  --ripple-color: var(--ion-color-red-mvs);
   transition: transform 0.2s ease-in-out;
   overflow: visible;
 
@@ -56,7 +56,7 @@ ion-tab-button::after {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: var(--ion-color-blue-mvs);
+  background: var(--ion-color-red-mvs);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -73,11 +73,11 @@ ion-tab-button.tab-selected::after {
   }
 
   ion-tab-button {
-    --color: #808080;
-    --color-selected: #ffffff;
+    --color: var(--ion-color-green-mvs);
+    --color-selected: var(--ion-color-red-mvs);
   }
 
   ion-tab-button.tab-selected::after {
-    background: #ffffff;
+    background: var(--ion-color-red-mvs);
   }
 }
