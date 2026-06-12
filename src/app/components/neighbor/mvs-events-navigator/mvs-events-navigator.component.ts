@@ -34,7 +34,7 @@ export class MvsEventsNavigatorComponent implements AfterViewInit {
         }),
       ],
       view: new View({
-        center: fromLonLat([2.3522, 48.8566]), // Coordonnées de Paris [Longitude, Latitude]
+        center: fromLonLat([6.1398, 46.1834]), // Coordonnées de Paris [Longitude, Latitude]
         zoom: 12,
       }),
     });

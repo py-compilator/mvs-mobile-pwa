@@ -3,6 +3,29 @@
     <ion-title>Réglages</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  <div class="mvs-home-content">Paramètres de l'application.</div>
+<ion-content [fullscreen]="true">
+  <div class="settings-container">
+    @if (currentUser(); as user) {
+      <div class="user-profile">
+        <div class="avatar-container">
+          <img [ngSrc]="user.photoURL || 'assets/icon/favicon.png'"
+               [alt]="user.displayName"
+               width="120"
+               height="120"
+               class="profile-avatar">
+        </div>
+        <div class="user-info">
+          <h1>{{ user.displayName }}</h1>
+          <p>{{ user.email }}</p>
+        </div>
+      </div>
+    }
+
+    <div class="actions-container">
+      <ion-button expand="block" fill="clear" class="logout-button" (click)="logout()">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        Déconnexion
+      </ion-button>
+    </div>
+  </div>
 </ion-content>
