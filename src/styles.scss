@@ -126,5 +126,130 @@ ion-alert.custom-alert {
   height: 100%;
 }
 
+/* MVS Custom Header Styles */
+
+ion-fab {
+  position: fixed !important;
+  z-index: 1000 !important;
+  /* Alignement précis avec le texte du ion-title (font-size: 28px) */
+  &[vertical="top"][edge="true"] {
+    margin-top: 18px; /* Ajusté pour aligner visuellement le bouton avec le texte de 28px */
+    margin-right: 20px;
+  }
+}
+
+ion-header.mvs-header {
+  --background: transparent;
+  padding: 16px 20px 8px;
+  background: linear-gradient(to bottom, rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.9) 0%, rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.8) 100%);
+  backdrop-filter: blur(10px);
+
+  ion-toolbar {
+    --background: transparent;
+    --border-style: none;
+    --padding-start: 0;
+    --padding-end: 0;
+    --min-height: 44px;
+  }
+
+  ion-title {
+    padding: 0;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--ion-color-blue-mvs);
+    letter-spacing: -0.5px;
+    text-align: left;
+  }
+}
+
+/* Support pour le mode sombre des headers */
+@media (prefers-color-scheme: dark) {
+  ion-header.mvs-header {
+    background: linear-gradient(to bottom, rgba(30, 30, 30, 0.9) 0%, rgba(30, 30, 30, 0.8) 100%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+    ion-title {
+      color: #ffffff;
+    }
+  }
+}
+
+/* MVS List and Item Styles */
+
+ion-list.mvs-list {
+  background: transparent;
+  padding: 8px 16px;
+}
+
+ion-item.mvs-item-selected {
+  --background: rgba(var(--ion-color-blue-mvs-rgb), 0.08);
+  --border-radius: 16px;
+  --inner-padding-end: 12px;
+  --padding-start: 12px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(var(--ion-color-blue-mvs-rgb), 0.12);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 15%;
+    height: 70%;
+    width: 4px;
+    background: var(--ion-color-blue-mvs);
+    border-radius: 0 4px 4px 0;
+  }
+
+  ion-label {
+    font-weight: 700;
+    color: var(--ion-color-blue-mvs);
+  }
+
+  ion-avatar {
+    border: 2px solid var(--ion-color-blue-mvs);
+    padding: 2px;
+  }
+}
+
+/* Fallback for items in the list to have some spacing */
+ion-list.mvs-list ion-item {
+  --border-style: none;
+  --inner-padding-end: 0;
+  --padding-start: 0;
+  border-radius: 16px;
+  margin-bottom: 4px;
+  transition: all 0.2s ease;
+}
+
+/* Support pour le mode sombre pour les items sélectionnés */
+@media (prefers-color-scheme: dark) {
+  ion-item.mvs-item-selected {
+    --background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+    &::before {
+      background: #ffffff;
+    }
+
+    ion-label {
+      color: #ffffff;
+    }
+
+    ion-avatar {
+      border-color: #ffffff;
+    }
+  }
+}
+
+/* MVS Containers */
+
+.mvs-events-container {
+  padding-top: 10px;
+  padding-bottom: 80px; /* Espace pour la tab-bar flottante */
+}
 
 /* End */

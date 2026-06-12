@@ -1,8 +1,41 @@
-<ion-header>
+<ion-header class="mvs-header">
   <ion-toolbar>
     <ion-title>Évènements</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  <div class="mvs-home-content">Listen d'évènements</div>
+
+<ion-fab vertical="top" horizontal="end" [edge]="true">
+  <ion-fab-button>
+    <ion-icon name="chevron-down-circle"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="bottom">
+    <ion-fab-button>
+      <ion-icon name="document"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button>
+      <ion-icon name="color-palette"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button>
+      <ion-icon name="globe"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab>
+
+<ion-content fixed-slot-placement="before" class="ion-padding-bottom">
+  <div class="mvs-events-container">
+    <ion-list class="mvs-list">
+      @for (item of items; track item; let index = $index) {
+        <ion-item (click)="selectItem(item)"
+                  [class.mvs-item-selected]="selectedItem() === item">
+          <ion-avatar slot="start">
+            <img [src]="'https://picsum.photos/80/80?random=' + index" alt="avatar" />
+          </ion-avatar>
+          <ion-label>{{ item }}</ion-label>
+        </ion-item>
+      }
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
 </ion-content>
