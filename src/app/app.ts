@@ -1,5 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { settings, navigate, radio } from 'ionicons/icons';
+
 
 @Component({
   selector: 'app-root',
@@ -8,5 +11,8 @@ import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
   styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('mvs-mobile-pwa');
+
+  constructor() {
+    addIcons({ navigate, settings, radio });
+  }
 }
