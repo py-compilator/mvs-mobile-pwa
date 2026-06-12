@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "mvs-platform-mvp"
+  },
+  "targets": {
+    "mvs-platform-mvp": {
+      "hosting": {
+        "mvs-mobile-pwa": [
+          "mvs-mobile-pwa"
+        ]
+      }
+    }
+  }
+}

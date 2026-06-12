@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "target": "mvs-mobile-pwa",
+    "public": "dist/mvs-mobile-pwa/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

@@ -51,3 +51,5 @@ Thumbs.db
 .prettierrc
 
 AGENTS.md
+
+/src/environments
