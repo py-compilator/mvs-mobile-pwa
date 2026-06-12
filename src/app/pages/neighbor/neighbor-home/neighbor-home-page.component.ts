@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import {
   IonButton,
-  IonButtons,
   IonContent, IonFooter, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonMenu,
-  IonMenuButton, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+  IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { Router, RouterLink } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { logOutOutline, radio, navigate, settings } from 'ionicons/icons';
@@ -26,8 +25,6 @@ import { DEFAULT_ION_LOADING_DURATION } from '../../../interfaces/global-constan
     IonToolbar,
     IonTitle,
     IonContent,
-    IonButtons,
-    IonMenuButton,
     IonList,
     IonItem,
     RouterLink,

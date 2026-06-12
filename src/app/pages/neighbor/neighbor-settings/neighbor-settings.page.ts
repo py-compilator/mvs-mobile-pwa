@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import { IonAvatar, IonButtons, IonContent, IonHeader, IonIcon, IonMenuButton, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { NeighborAuthenticationService } from '../../../services/authentication/neighbor-authentication-service';
 
 @Component({
@@ -13,10 +13,8 @@ import { NeighborAuthenticationService } from '../../../services/authentication/
     IonTitle,
     IonToolbar,
     NgOptimizedImage,
-    IonIcon,
     IonButtons,
     IonMenuButton,
-    IonAvatar,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
