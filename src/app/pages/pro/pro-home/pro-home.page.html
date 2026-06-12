@@ -1,0 +1,114 @@
+<ion-split-pane when="lg" contentId="main">
+  <ion-menu side="end" contentId="main" type="reveal">
+    <ion-header class="ion-no-border">
+      <ion-toolbar>
+        <div class="menu-logo">
+          <!-- <img src="assets/icon/favicon.png" alt="MVS Logo" width="48" height="48"> -->
+          <ion-title>MVS PRO</ion-title>
+        </div>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list lines="none" class="mvs-menu-list">
+        @for (p of menuItems; track p.title) {
+          <ion-menu-toggle auto-hide="false">
+            <ion-item button routerDirection="root" [detail]="false" class="mvs-menu-item">
+              <ion-icon aria-hidden="true" slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        }
+      </ion-list>
+    </ion-content>
+
+    <ion-footer class="ion-no-border">
+      <ion-toolbar>
+        <ion-item button (click)="logout()" lines="none" class="logout-item">
+          <ion-icon slot="start" name="log-out-outline"></ion-icon>
+          <ion-label>Déconnexion</ion-label>
+        </ion-item>
+      </ion-toolbar>
+    </ion-footer>
+  </ion-menu>
+
+  <div class="ion-page" id="main">
+    <ion-header class="ion-no-border main-header">
+      <ion-toolbar>
+        <ion-buttons slot="end">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Tableau de bord</ion-title>
+        <ion-buttons slot="end">
+          <ion-button>
+            <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content [fullscreen]="true">
+      <div class="dashboard-content">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12" size-md="4">
+              <ion-card class="stat-card red">
+                <ion-card-content>
+                  <div class="stat-icon">
+                    <ion-icon name="people-outline"></ion-icon>
+                  </div>
+                  <div class="stat-data">
+                    <h3>1,284</h3>
+                    <p>Voisins actifs</p>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+            <ion-col size="12" size-md="4">
+              <ion-card class="stat-card green">
+                <ion-card-content>
+                  <div class="stat-icon">
+                    <ion-icon name="calendar-outline"></ion-icon>
+                  </div>
+                  <div class="stat-data">
+                    <h3>42</h3>
+                    <p>Événements ce mois</p>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+            <ion-col size="12" size-md="4">
+              <ion-card class="stat-card blue">
+                <ion-card-content>
+                  <div class="stat-icon">
+                    <ion-icon name="stats-chart-outline"></ion-icon>
+                  </div>
+                  <div class="stat-data">
+                    <h3>+12%</h3>
+                    <p>Engagement</p>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-margin-top">
+            <ion-col size="12">
+              <ion-card class="welcome-card">
+                <ion-card-header>
+                  <ion-card-title>Bienvenue sur votre espace Pro</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                  <p>Gérez vos communautés de voisins, organisez des événements et suivez l'activité de votre zone en un clin d'œil.</p>
+                  <ion-button fill="solid" class="mvs-button">
+                    Nouvel Événement
+                  </ion-button>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-content>
+  </div>
+</ion-split-pane>

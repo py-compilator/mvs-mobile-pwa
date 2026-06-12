@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
-import { IonAvatar, IonContent, IonHeader, IonIcon, IonInfiniteScroll,
+import { IonAvatar, IonButtons, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonInfiniteScroll,
   IonInfiniteScrollContent, IonItem,
-  IonLabel, IonList, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+  IonLabel, IonList, IonMenuButton, IonRow, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { addIcons,  } from 'ionicons';
 import {
   chevronForwardCircle,
@@ -19,13 +19,14 @@ import { InfiniteScrollCustomEvent } from '@ionic/angular';
     IonToolbar,
     IonTitle,
     IonContent,
-    IonIcon,
     IonList,
     IonItem,
     IonAvatar,
     IonLabel,
     IonInfiniteScroll,
     IonInfiniteScrollContent,
+    IonButtons,
+    IonMenuButton,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

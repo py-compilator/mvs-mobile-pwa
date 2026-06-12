@@ -1,3 +1,53 @@
+#main-content {
+  height: 100%;
+}
+
+ion-menu {
+  --width: 280px;
+
+  ion-toolbar {
+    --background: var(--ion-color-green-mvs);
+    --color: white;
+  }
+
+  ion-content {
+    --background: #fdfdfd;
+  }
+
+  ion-item {
+    --padding-start: 16px;
+    --border-radius: 8px;
+    margin: 4px 8px;
+    --color: var(--ion-color-step-700);
+    font-weight: 500;
+
+    ion-icon {
+      color: var(--ion-color-red-mvs);
+      margin-right: 12px;
+    }
+
+    &.selected {
+      --background: rgba(var(--ion-color-red-mvs-rgb), 0.1);
+      --color: var(--ion-color-red-mvs);
+      font-weight: 700;
+    }
+  }
+
+  ion-footer {
+    padding: 8px;
+
+    ion-toolbar {
+      --background: transparent;
+    }
+
+    .logout-button {
+      --color: var(--ion-color-red-mvs);
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+}
+
 ion-tab-bar {
   --background: #ffffff;
   --border: none;

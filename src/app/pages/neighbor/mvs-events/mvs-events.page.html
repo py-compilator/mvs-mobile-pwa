@@ -1,10 +1,13 @@
 <ion-header class="mvs-header">
   <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>Évènements</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content fixed-slot-placement="before" class="ion-padding-bottom">
+<ion-content class="ion-padding-bottom" fixed-slot-placement="before">
   <div class="mvs-events-container">
     <ion-list class="mvs-list">
       @for (item of items; track item; let index = $index) {

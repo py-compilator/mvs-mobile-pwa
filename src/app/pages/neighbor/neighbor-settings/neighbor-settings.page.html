@@ -1,5 +1,8 @@
 <ion-header class="mvs-header">
   <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>Réglages</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -21,11 +24,5 @@
       </div>
     }
 
-    <div class="actions-container">
-      <ion-button expand="block" fill="clear" class="logout-button" (click)="logout()">
-        <ion-icon slot="start" name="log-out-outline"></ion-icon>
-        Déconnexion
-      </ion-button>
-    </div>
   </div>
 </ion-content>

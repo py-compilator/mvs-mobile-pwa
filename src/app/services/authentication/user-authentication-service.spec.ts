@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { UserAuthenticationService } from './user-authentication-service';
+import { NeighborAuthenticationService } from './neighbor-authentication-service';
 
-describe('UserAuthenticationService', () => {
-  let service: UserAuthenticationService;
+describe('NeighborAuthenticationService', () => {
+  let service: NeighborAuthenticationService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(UserAuthenticationService);
+    service = TestBed.inject(NeighborAuthenticationService);
   });
 
   it('should be created', () => {

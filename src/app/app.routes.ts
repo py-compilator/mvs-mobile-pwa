@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { HomePage } from './pages/neighbor/home/home.page';
+import { NeighborHomePage } from './pages/neighbor/neighbor-home/neighbor-home-page.component';
 
 export const routes: Routes = [
   {
@@ -7,8 +7,12 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/login/login.page').then((m) => m.LoginPage),
   },
   {
-    path: 'home',
-    component: HomePage,
+    path: 'pro-home',
+    loadComponent: () => import('./pages/pro/pro-home/pro-home.page').then((m) => m.ProHomePage),
+  },
+  {
+    path: 'neighbor-home',
+    component: NeighborHomePage,
     children: [
       {
         path: 'mvs-events',
@@ -24,7 +28,7 @@ export const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/home/mvs-events',
+        redirectTo: '/neighbor-home/mvs-events',
         pathMatch: 'full',
       },
     ],

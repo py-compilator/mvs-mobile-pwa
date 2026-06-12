@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class UserAuthenticationService {
+export class NeighborAuthenticationService {
 
   private readonly _firebaseAuthService = inject(Auth);
 

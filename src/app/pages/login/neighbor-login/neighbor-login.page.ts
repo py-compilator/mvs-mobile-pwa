@@ -11,7 +11,7 @@ import {
   logoFacebook,
   logoYahoo,
 } from 'ionicons/icons';
-import { UserAuthenticationService } from '../../../services/authentication/user-authentication-service';
+import { NeighborAuthenticationService } from '../../../services/authentication/neighbor-authentication-service';
 import { Router } from '@angular/router';
 
 
@@ -26,7 +26,7 @@ import { Router } from '@angular/router';
 export class NeighborLoginPage {
 
   private readonly _ngRouter = inject(Router);
-  private _firebaseAuthService = new UserAuthenticationService();
+  private _firebaseAuthService = new NeighborAuthenticationService();
 
   constructor() {
     addIcons({
@@ -40,6 +40,6 @@ export class NeighborLoginPage {
 
   async handleAuthWithGoogle() {
     await this._firebaseAuthService.signInWithGoogle();
-    await this._ngRouter.navigateByUrl(`/home`);
+    await this._ngRouter.navigateByUrl(`/neighbor-home`);
   }
 }
